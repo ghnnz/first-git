@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import models.Task;
 import utils.DBUtil;
+import validators.MessageValidator;
 /**
  * Servlet implementation class UpdateServlet
  */
@@ -49,7 +50,7 @@ public class UpdateServlet extends HttpServlet {
             Timestamp currentTime = new Timestamp(System.currentTimeMillis());
             t.setUpdated_at(currentTime);
 
-            List<String> errors = TaskValidator.validate(t);
+            List<String> errors = MessageValidator.validate(t);
             if(errors.size() > 0) {
                 em.close();
 
